@@ -933,10 +933,10 @@ var configDefault = {
     botAlias: '$LATEST',
 
     // instruction message shown in the UI
-    initialText: 'You can ask me for help ordering flowers. ' + 'Just type "order flowers" or click on the mic and say it.',
+    initialText: 'You can ask me for help with your IVF journey ' + 'Just type "help" or click on the mic and say it.',
 
     // instructions spoken when mic is clicked
-    initialSpeechInstruction: 'Say "Order Flowers" to get started',
+    initialSpeechInstruction: 'Say "Help" to get started',
 
     // Lex initial sessionAttributes
     sessionAttributes: {},
@@ -978,7 +978,7 @@ var configDefault = {
   ui: {
     // TODO may want to move pageTitle out to LexApp or Page component
     // title of HTML page added dynamically to index.html
-    pageTitle: 'Order Flowers Bot',
+    pageTitle: 'Karina - An Assistant for your IVF Journey',
 
     // when running as an embedded iframe, this will be used as the
     // be the parent origin used to send/receive messages
@@ -990,12 +990,12 @@ var configDefault = {
     parentOrigin: null,
 
     // chat window text placeholder
-    textInputPlaceholder: 'Type here or click on the mic',
+    textInputPlaceholder: 'Hello',
 
-    toolbarColor: 'red',
+    toolbarColor: 'pink lighten-3',
 
     // chat window title
-    toolbarTitle: 'Order Flowers',
+    toolbarTitle: 'WASSUP', //NOTE: doesn't seem to affect the UI???
 
     // logo used in toolbar - also used as favicon not specificied
     toolbarLogo: '',
