@@ -26,27 +26,27 @@ create table appointment(
 
 /* Populate patient table with mock data */
 
-insert into patient values ('Diana','Wong', 'diana.wong@gmail.com','1990-03-13','2017-12-12','123456789');
-insert into patient values ('Katy','Perry', 'katyperry@gmail.com','1991-03-13','2017-12-12','223456789');
-insert into patient values ('Krista','Steward', 'krista@gmail.com','1980-03-13','2017-12-12','323456789');
+insert into patient values ('Diana','Wong', 'diana.wong@gmail.com','1990-03-13','2017-12-12','p001');
+insert into patient values ('Katy','Perry', 'katyperry@gmail.com','1991-03-13','2017-12-12','p002');
+insert into patient values ('Krista','Steward', 'krista@gmail.com','1980-03-13','2017-12-12','p003');
 
 /* Populate appointment table with mock data */
 
-insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', '1234554321', '123456789');
-insert into appointment values ('Dr Happy Lee', '2018-04-03', '2018-09-10', 'B', 'D', '1234554320', '223456789');
-insert into appointment values ('Dr Happy Lee', '2018-05-03', '2018-11-10', 'A', 'D', '1234554329', '323456789');
+insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001', 'p001');
+insert into appointment values ('Dr Happy Lee', '2018-04-03', '2018-09-10', 'B', 'D', 'a002', 'p002');
+insert into appointment values ('Dr Happy Lee', '2018-05-03', '2018-11-10', 'A', 'D', 'a003', 'p003');
 
 /* View all appointment information from a patient using their ID*/
 
-select * from patient where patientID = 'patientID'
+select * from patient where patientID = 'p123';
 
 /* Patient views next appointment using this command */
 
-select nextAppointmentDate from appointment where patientID = 'patientID' 
+select nextAppointmentDate from appointment where patientID = 'p123';
 
 /* Patient updates their next appointment date */
 
-update appointment set nextAppointmentDate = 'date' where patientID = 'patientID'
+update appointment set nextAppointmentDate = '2020-12-12' where patientID = 'p123';
 
 /* Set next appointment as current appointment, and update next appointment 
 with new appointment date */
@@ -56,9 +56,10 @@ set currentStage =
 (
 select nextStage 
 from (select * from appointment) as tempAppointment 
-where patientID = 123456789
+where patientID = 'p123'
 ), 
-nextStage = 'C' where patientID = '123456789';
+nextStage = 'C' where patientID = 'p123';
+
 
 
 
