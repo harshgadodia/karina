@@ -19,10 +19,26 @@ create table appointment(
 	lastAppointmentDate DATE NOT NULL,
 	nextAppointmentDate DATE NOT NULL,
 	currentStage ENUM('A','B','C','D','E','F','G','H','I','J'),
-	nextStage varchar(64) NOT NULL,
+	nextStage ENUM('A','B','C','D','E','F','G','H','I','J'),
 	appointmentID varchar(64) NOT NULL PRIMARY KEY,
 	patientID varchar(64) references patient(patientID)
 );
+
+/* We will keep infromation about different stages in this table */
+
+create table stage(
+	stage ENUM('A','B','C','D','E','F') NOT NULL PRIMARY KEY,
+	description varchar(500)
+);
+
+/* Populate stage table with mock data = update this later on with real stage information*/
+
+insert into stage values ('A', 'At this stage, we will be giving you advice on ...');
+insert into stage values ('B', 'At this stage, we will be giving you advice on ...');
+insert into stage values ('C', 'At this stage, we will be giving you advice on ...');
+insert into stage values ('D', 'At this stage, we will be giving you advice on ...');
+insert into stage values ('E', 'At this stage, we will be giving you advice on ...');
+insert into stage values ('F', 'At this stage, we will be giving you advice on ...');
 
 /* Populate patient table with mock data */
 
@@ -35,6 +51,10 @@ insert into patient values ('Krista','Steward', 'krista@gmail.com','1980-03-13',
 insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001', 'p001');
 insert into appointment values ('Dr Happy Lee', '2018-04-03', '2018-09-10', 'B', 'D', 'a002', 'p002');
 insert into appointment values ('Dr Happy Lee', '2018-05-03', '2018-11-10', 'A', 'D', 'a003', 'p003');
+
+/* Patient views their current stage */
+
+select currentStage from appointment where patientID = 'p123'
 
 /* View all appointment information from a patient using their ID*/
 
