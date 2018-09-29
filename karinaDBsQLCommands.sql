@@ -65,9 +65,11 @@ insert into patient values ('Krista','Steward', 'krista@gmail.com','1980-03-13',
 
 /* Populate appointment table with mock data */
 
-insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001','NULL', 'p001');
-insert into appointment values ('Dr Happy Lee', '2018-04-03', '2018-09-10', 'B', 'D', 'a002','NULL', 'p002');
-insert into appointment values ('Dr Happy Lee', '2018-05-03', '2018-11-10', 'A', 'D', 'a003','NULL', 'p003');
+insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001','drink more water', 'p001');
+insert into appointment values ('Dr Happy Lee', '2018-04-03', '2018-09-10', 'B', 'D', 'a002','drink more juice', 'p002');
+insert into appointment values ('Dr Happy Lee', '2018-05-03', '2018-11-10', 'A', 'D', 'a003','drink more milk', 'p003');
+
+insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-11', 'B', 'E', 'a004','pee more', 'p001');
 
 /* Patient views their current stage */
 
@@ -97,7 +99,11 @@ where patientID = 'p123'
 ), 
 nextStage = 'C' where patientID = 'p123';
 
-insert into appointment values ('Dr Happy Lee', '2018-05-03 12:12:12', '2018-11-10', 'A', 'D', 'a004','NULL', 'p003');
+insert into appointment values ('Dr Happy Lee', '2018-05-03 12:12:12', '2018-11-10', 'A', 'D', 'a005','NULL', 'p003');
+
+select * from appointment where appointmentid = 'a005'
+
+select appointmentID from appointment where patientID = 'a005' order by appointmentID desc;
 
 
 
