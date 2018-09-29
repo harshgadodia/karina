@@ -48,6 +48,33 @@ create table stage(
 	description varchar(500)
 );
 
+create table injectionSchedule(
+	patientID varchar(64) references patient(patientID),
+	injectionID varchar(64) not null primary key
+);
+
+create table injectionTimings(
+	injectionID varchar(64) REFERENCES injectionSchedule(injectionID),
+	day ENUM('1','2','3','4','5','6','7','8','9','10'),
+	date DATE,
+	injectionA DATETIME default null,
+	injectionB DATETIME default null,
+	injectionC DATETIME default null,
+	injectionD DATETIME default null,
+	injectionE DATETIME default null
+);
+
+/* Populate the injection table */
+
+insert into injectionSchedule values ('p001','i001');
+insert into injectionSchedule values ('p002','i002');
+
+insert into injectionTimings values ('i001','1','2018-12-12','null','null','null','null','null');
+insert into injectionTimings values ('i001','2','2018-12-12','2018-12-12 06:30:30','null','null','null','null');
+insert into injectionTimings values ('i001','3','2018-12-12','null','2018-12-12 06:30:30','null','null','null');
+insert into injectionTimings values ('i001','4','2018-12-12','null','null','null','null','null');
+insert into injectionTimings values ('i001','5','2018-12-12','null','null','null','2018-12-12 06:30:30','null');
+
 /* Populate stage table with mock data = update this later on with real stage*/
 
 insert into stage values ('A', 'At this stage, we will be giving you advice on ...');
@@ -105,6 +132,22 @@ select * from appointment where appointmentid = 'a005'
 
 select appointmentID from appointment where patientID = 'a005' order by appointmentID desc;
 
+select appointmentID from appointment where patientID = 'p003' order by appointmentID desc limit 1;
 
+select drAdvice from appointment where appointmentid = (select appointmentID from appointment where patientID = 'p003' order by appointmentID desc limit 1);
 
+update appointment 
+set currentStage = 
+(
+select nextStage 
+from (select * from appointment) as tempAppointment 
+where patientID = 'p123'
+), 
+nextStage = 'C',
+drAdvice = 'new dr advice'
+ where patientID = 'p123';
+
+select nextAppointmentDate from appointment where patientID = 'p001';
+
+select nextappointmentdate from appointment where patientID = 'p001' order by nextappointmentdate desc limit 1;
 
