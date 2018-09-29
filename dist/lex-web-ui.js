@@ -927,7 +927,7 @@ var configDefault = {
 
   lex: {
     // Lex bot name
-    botName: 'WebUiOrderFlowers',
+    botName: 'Karina',
 
     // Lex bot alias/version
     botAlias: '$LATEST',
@@ -990,12 +990,12 @@ var configDefault = {
     parentOrigin: null,
 
     // chat window text placeholder
-    textInputPlaceholder: 'Hello',
+    textInputPlaceholder: 'Type something or tap the mic',
 
     toolbarColor: 'pink lighten-3',
 
     // chat window title
-    toolbarTitle: 'WASSUP', //NOTE: doesn't seem to affect the UI???
+    toolbarTitle: 'Karina', //NOTE: doesn't seem to affect the UI???
 
     // logo used in toolbar - also used as favicon not specificied
     toolbarLogo: '',
