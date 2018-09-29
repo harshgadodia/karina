@@ -132,10 +132,10 @@ const configDefault = {
     toolbarTitle: 'Hello',
 
     // logo used in toolbar - also used as favicon not specificied
-    toolbarLogo: '',
+    toolbarLogo: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // fav icon
-    favIcon: '',
+    favIcon: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // controls if the Lex initialText will be pushed into the message
     // list after the bot dialog is done (i.e. fail or fulfilled)
@@ -160,7 +160,7 @@ const configDefault = {
     showMessageDate: true,
 
     // bot avatar image URL
-    avatarImageUrl: '',
+    avatarImageUrl: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // Show the diaglog state icon, check or alert, in the text bubble
     showDialogStateIcon: true,

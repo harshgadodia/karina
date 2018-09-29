@@ -927,7 +927,7 @@ var configDefault = {
 
   lex: {
     // Lex bot name
-    botName: 'WebUiOrderFlowers',
+    botName: 'Karina',
 
     // Lex bot alias/version
     botAlias: '$LATEST',
@@ -990,18 +990,18 @@ var configDefault = {
     parentOrigin: null,
 
     // chat window text placeholder
-    textInputPlaceholder: 'Hello',
+    textInputPlaceholder: 'Type something or tap the mic',
 
     toolbarColor: 'pink lighten-3',
 
     // chat window title
-    toolbarTitle: 'WASSUP', //NOTE: doesn't seem to affect the UI???
+    toolbarTitle: 'Karina', //NOTE: doesn't seem to affect the UI???
 
     // logo used in toolbar - also used as favicon not specificied
-    toolbarLogo: '',
+    toolbarLogo: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // fav icon
-    favIcon: '',
+    favIcon: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // controls if the Lex initialText will be pushed into the message
     // list after the bot dialog is done (i.e. fail or fulfilled)
@@ -1026,7 +1026,7 @@ var configDefault = {
     showMessageDate: true,
 
     // bot avatar image URL
-    avatarImageUrl: '',
+    avatarImageUrl: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // Show the diaglog state icon, check or alert, in the text bubble
     showDialogStateIcon: true,
