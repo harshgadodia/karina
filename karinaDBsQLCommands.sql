@@ -1,5 +1,21 @@
+/* 
+MySQL 5.7.22, RDS db.m3.medium
+*/
+
+/* 
+
+Authentication Stuff
+
+RDSHOST="host=srbhiblimbwh5j.cuceupwwww7d.us-east-1.rds.amazonaws.com"
+TOKEN="$(aws rds generate-db-auth-token --hostname $RDSHOST --port 3306 --region us-east-1c --username karinadb )"
+
+mysql --host=$RDSHOST --port=3306 --ssl-ca=/Users/harsh/Desktop/rds-ca-2015-root.pem --enable-cleartext-plugin --user=karinadb --password=$TOKEN 
+
+*/
+
 drop table if exists patient;
 drop table if exists appointment;
+drop table if exists stage;
 
 /* Create new instance of a patient table */
 
@@ -15,23 +31,24 @@ create table patient(
 /* Create new instance of an appointment table */
 
 create table appointment(
-	drName VARCHAR(64) NOT NULL REFERENCES doctor(name),
-	lastAppointmentDate DATE NOT NULL,
-	nextAppointmentDate DATE NOT NULL,
-	currentStage ENUM('A','B','C','D','E','F','G','H','I','J'),
-	nextStage ENUM('A','B','C','D','E','F','G','H','I','J'),
+	drName VARCHAR(64) REFERENCES doctor(name),
+	lastAppointmentDate DATETIME,
+	nextAppointmentDate DATETIME,
+	currentStage ENUM('A','B','C','D','E','F','G','H','I','J','0'), /* 0 type for people with no current stage */
+	nextStage ENUM('A','B','C','D','E','F','G','H','I','J','0'), /* 0 type for people with no next stage */
 	appointmentID varchar(64) NOT NULL PRIMARY KEY,
+	drAdvice varchar(512),
 	patientID varchar(64) references patient(patientID)
 );
 
 /* We will keep infromation about different stages in this table */
 
 create table stage(
-	stage ENUM('A','B','C','D','E','F') NOT NULL PRIMARY KEY,
+	stage ENUM('A','B','C','D','E','F','0') NOT NULL PRIMARY KEY,
 	description varchar(500)
 );
 
-/* Populate stage table with mock data = update this later on with real stage information*/
+/* Populate stage table with mock data = update this later on with real stage*/
 
 insert into stage values ('A', 'At this stage, we will be giving you advice on ...');
 insert into stage values ('B', 'At this stage, we will be giving you advice on ...');
@@ -48,9 +65,9 @@ insert into patient values ('Krista','Steward', 'krista@gmail.com','1980-03-13',
 
 /* Populate appointment table with mock data */
 
-insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001', 'p001');
-insert into appointment values ('Dr Happy Lee', '2018-04-03', '2018-09-10', 'B', 'D', 'a002', 'p002');
-insert into appointment values ('Dr Happy Lee', '2018-05-03', '2018-11-10', 'A', 'D', 'a003', 'p003');
+insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001','NULL', 'p001');
+insert into appointment values ('Dr Happy Lee', '2018-04-03', '2018-09-10', 'B', 'D', 'a002','NULL', 'p002');
+insert into appointment values ('Dr Happy Lee', '2018-05-03', '2018-11-10', 'A', 'D', 'a003','NULL', 'p003');
 
 /* Patient views their current stage */
 
@@ -79,6 +96,8 @@ from (select * from appointment) as tempAppointment
 where patientID = 'p123'
 ), 
 nextStage = 'C' where patientID = 'p123';
+
+insert into appointment values ('Dr Happy Lee', '2018-05-03 12:12:12', '2018-11-10', 'A', 'D', 'a004','NULL', 'p003');
 
 
 
