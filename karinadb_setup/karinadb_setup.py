@@ -44,7 +44,8 @@ def handler(event, context):
 			email VARCHAR(64) UNIQUE NOT NULL,\
 			dob DATE NOT NULL,\
 			since DATE NOT NULL,\
-			patientID VARCHAR(16) NOT NULL PRIMARY KEY\
+			patientID VARCHAR(16) NOT NULL PRIMARY KEY,\
+			contact VARCHAR(32) NOT NULL\
 		)")
 		cur.execute("create table appointment(\
 	drName VARCHAR(64) REFERENCES doctor(name),\
@@ -67,9 +68,9 @@ def handler(event, context):
 		cur.execute("insert into stage values ('E', 'At this stage, we will be giving you advice on ...')")
 		cur.execute("insert into stage values ('F', 'At this stage, we will be giving you advice on ...')")
 
-		cur.execute("insert into patient values ('Diana','Wong', 'diana.wong@gmail.com','1990-03-13','2017-12-12','p001')")
-		cur.execute("insert into patient values ('Katy','Wang', 'kw@gmail.com','1991-03-13','2017-12-12','p002')")
-		cur.execute("insert into patient values ('Terri','Mack', 'tm@gmail.com','1992-03-13','2017-12-12','p003')")
+		cur.execute("insert into patient values ('Diana','Wong', 'diana.wong@gmail.com','1990-03-13','2017-12-12','p001','81396940')")
+		cur.execute("insert into patient values ('Katy','Wang', 'kw@gmail.com','1991-03-13','2017-12-12','p002','81396940')")
+		cur.execute("insert into patient values ('Terri','Mack', 'tm@gmail.com','1992-03-13','2017-12-12','p003','81396940')")
 
 		cur.execute("insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001','NULL', 'p001')")
 		cur.execute("insert into appointment values ('Dr John Lee', '2018-03-03', '2018-10-10', 'B', 'B', 'a002','NULL', 'p002')")
