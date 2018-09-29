@@ -160,7 +160,7 @@ const configDefault = {
     showMessageDate: true,
 
     // bot avatar image URL
-    avatarImageUrl: '',
+    avatarImageUrl: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // Show the diaglog state icon, check or alert, in the text bubble
     showDialogStateIcon: true,
