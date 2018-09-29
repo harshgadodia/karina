@@ -76,7 +76,7 @@ def handler(event, context):
 
 		cur.execute("insert into appointment values ('Dr David Lee', '2018-09-30 12:12:12', '2018-09-30 12:12:12', 'A', 'B', 'a001','NULL', 'p001')")
 		cur.execute("insert into appointment values ('Dr John Lee', '2018-09-30 12:12:12', '2018-09-30 13:12:12', 'B', 'B', 'a002','NULL', 'p002')")
-		cur.execute("insert into appointment values ('Dr Krista Kapoor', '2018-09-30 12:12:12', '2018-09-31 14:12:12', 'C', 'F', 'a003','NULL', 'p003')")
+		cur.execute("insert into appointment values ('Dr Krista Kapoor', '2018-09-30 12:12:12', '2018-10-01 14:12:12', 'C', 'F', 'a003','NULL', 'p003')")
 
 		conn.commit()
 	
