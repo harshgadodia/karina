@@ -38,6 +38,8 @@ def handler(event, context):
 		cur.execute("drop table if exists patient")
 		cur.execute("drop table if exists appointment")
 		cur.execute("drop table if exists stage")
+		cur.execute("drop table if exists injectionSchedule")
+		cur.execute("drop table if exists injectionTimings")
 		cur.execute("create table patient(\
 			first_name VARCHAR(64) NOT NULL,\
 			last_name VARCHAR(64) NOT NULL,\
@@ -60,6 +62,21 @@ def handler(event, context):
 	stage ENUM('A','B','C','D','E','F','0') NOT NULL PRIMARY KEY,\
 	description varchar(500)\
 )")
+		cur.execute("create table injectionSchedule(\
+	patientID varchar(64) references patient(patientID),\
+	injectionID varchar(64) not null primary key\
+)")
+		cur.execute("create table injectionTimings(\
+	injectionID varchar(64) REFERENCES injectionSchedule(injectionID),\
+	day ENUM('1','2','3','4','5','6','7','8','9','10') primary key,\
+	date DATE,\
+	injectionA DATETIME default null,\
+	injectionB DATETIME default null,\
+	injectionC DATETIME default null,\
+	injectionD DATETIME default null,\
+	injectionE DATETIME default null\
+)")
+
 		cur.execute("insert into stage values ('A', 'At this stage, we will be giving you advice on ...')")
 		cur.execute("insert into stage values ('B', 'At this stage, we will be giving you advice on ...')")
 		cur.execute("insert into stage values ('C', 'At this stage, we will be giving you advice on ...')")
@@ -71,10 +88,22 @@ def handler(event, context):
 		cur.execute("insert into patient values ('Katy','Wang', 'kw@gmail.com','1991-03-13','2017-12-12','p002')")
 		cur.execute("insert into patient values ('Terri','Mack', 'tm@gmail.com','1992-03-13','2017-12-12','p003')")
 
-		cur.execute("insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001','NULL', 'p001')")
-		cur.execute("insert into appointment values ('Dr John Lee', '2018-03-03', '2018-10-10', 'B', 'B', 'a002','NULL', 'p002')")
-		cur.execute("insert into appointment values ('Dr Krista Kapoor', '2018-03-03', '2018-10-10', 'C', 'F', 'a003','NULL', 'p003')")
+		cur.execute("insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001','avoid sugary foods', 'p001')")
+		cur.execute("insert into appointment values ('Dr John Lee', '2018-03-03', '2018-10-10', 'B', 'B', 'a002','hello', 'p002')")
+		cur.execute("insert into appointment values ('Dr Krista Kapoor', '2018-03-03', '2018-10-10', 'C', 'F', 'a003','remember to self-administer injections', 'p003')")
 
-		conn.commit()
+		cur.execute("insert into injectionSchedule values ('p001','i001')")
+		cur.execute("insert into injectionSchedule values ('p002','i002')")
+
+		cur.execute("insert into injectionTimings values ('i001','1','2018-12-12',null,null,null,null,null);")
+		cur.execute("insert into injectionTimings values ('i001','2','2018-12-12','2018-12-12 06:30:30',null,null,null,null)")
+		cur.execute("insert into injectionTimings values ('i001','3','2018-12-12',null,'2018-12-12 06:30:30',null,null,null)")
+		cur.execute("insert into injectionTimings values ('i001','4','2018-12-12',null,null,null,null,null)")
+		cur.execute("insert into injectionTimings values ('i001','5','2018-12-12',null,null,null,'2018-12-12 06:30:30',null)")
+
+
+	conn.commit()
+	conn.close()
 	
+	print ("successful setting up of db")
 	return "successful setting up of db"
