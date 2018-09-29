@@ -998,10 +998,10 @@ var configDefault = {
     toolbarTitle: 'Karina', //NOTE: doesn't seem to affect the UI???
 
     // logo used in toolbar - also used as favicon not specificied
-    toolbarLogo: '',
+    toolbarLogo: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // fav icon
-    favIcon: '',
+    favIcon: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
 
     // controls if the Lex initialText will be pushed into the message
     // list after the bot dialog is done (i.e. fail or fulfilled)
