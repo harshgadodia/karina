@@ -4,6 +4,8 @@ import rds_config
 import pymysql
 import traceback
 
+#version 53 --harsh
+
 #rds settings
 rds_host  = "srbhiblimbwh5j.cuceupwwww7d.us-east-1.rds.amazonaws.com"
 bind_address = "0.0.0.0"
@@ -68,13 +70,13 @@ def handler(event, context):
 		cur.execute("insert into stage values ('E', 'At this stage, we will be giving you advice on ...')")
 		cur.execute("insert into stage values ('F', 'At this stage, we will be giving you advice on ...')")
 
-		cur.execute("insert into patient values ('Diana','Wong', 'diana.wong@gmail.com','1990-03-13','2017-12-12','p001','81396940')")
-		cur.execute("insert into patient values ('Katy','Wang', 'kw@gmail.com','1991-03-13','2017-12-12','p002','81396940')")
-		cur.execute("insert into patient values ('Terri','Mack', 'tm@gmail.com','1992-03-13','2017-12-12','p003','81396940')")
+		cur.execute("insert into patient values ('Diana','Wong', 'diana.wong@gmail.com','1990-03-13','2017-12-12','p001','97762227')")
+		cur.execute("insert into patient values ('Katy','Wang', 'kw@gmail.com','1991-03-13','2017-12-12','p002','97762227')")
+		cur.execute("insert into patient values ('Terri','Mack', 'tm@gmail.com','1992-03-13','2017-12-12','p003','97762227')")
 
-		cur.execute("insert into appointment values ('Dr David Lee', '2018-03-03', '2018-10-10', 'A', 'B', 'a001','NULL', 'p001')")
-		cur.execute("insert into appointment values ('Dr John Lee', '2018-03-03', '2018-10-10', 'B', 'B', 'a002','NULL', 'p002')")
-		cur.execute("insert into appointment values ('Dr Krista Kapoor', '2018-03-03', '2018-10-10', 'C', 'F', 'a003','NULL', 'p003')")
+		cur.execute("insert into appointment values ('Dr David Lee', '2018-09-30 12:12:12', '2018-09-30 12:12:12', 'A', 'B', 'a001','NULL', 'p001')")
+		cur.execute("insert into appointment values ('Dr John Lee', '2018-09-30 12:12:12', '2018-09-30 13:12:12', 'B', 'B', 'a002','NULL', 'p002')")
+		cur.execute("insert into appointment values ('Dr Krista Kapoor', '2018-09-30 12:12:12', '2018-09-31 14:12:12', 'C', 'F', 'a003','NULL', 'p003')")
 
 		conn.commit()
 	
