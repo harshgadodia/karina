@@ -998,10 +998,10 @@ var configDefault = {
     toolbarTitle: 'Karina', //NOTE: doesn't seem to affect the UI???
 
     // logo used in toolbar - also used as favicon not specificied
-    toolbarLogo: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
+    toolbarLogo: 'https://s3.amazonaws.com/smooth-delivery-images/nurse.png',
 
     // fav icon
-    favIcon: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
+    favIcon: 'https://s3.amazonaws.com/smooth-delivery-images/nurse.png',
 
     // controls if the Lex initialText will be pushed into the message
     // list after the bot dialog is done (i.e. fail or fulfilled)
@@ -1026,7 +1026,7 @@ var configDefault = {
     showMessageDate: true,
 
     // bot avatar image URL
-    avatarImageUrl: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
+    avatarImageUrl: 'https://s3.amazonaws.com/smooth-delivery-images/nurse.png',
 
     // Show the diaglog state icon, check or alert, in the text bubble
     showDialogStateIcon: true,

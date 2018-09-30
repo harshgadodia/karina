@@ -126,10 +126,10 @@ const configDefault = {
     // chat window text placeholder
     textInputPlaceholder: 'Type here or click on the mic',
 
-    toolbarColor: 'blue',
+    toolbarColor: 'blue', //doesn't affect
 
     // chat window title
-    toolbarTitle: 'Hello',
+    toolbarTitle: 'Hello', //doesn't affect
 
     // logo used in toolbar - also used as favicon not specificied
     toolbarLogo: 'https://s3.amazonaws.com/smooth-delivery-images/icons8-baby-bottle-50.png',
